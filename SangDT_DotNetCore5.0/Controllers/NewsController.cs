@@ -110,6 +110,12 @@ namespace SangDT_DotNetCore5._0.Controllers
             var result = new {Id = id, Employee = employee};
             return Json(result);   
         }
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
     }
 
     public class Employee
