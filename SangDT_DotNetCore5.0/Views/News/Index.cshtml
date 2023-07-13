@@ -1,6 +1,26 @@
 ﻿
 @{
     Layout = "_Layout";
+    ViewData["Title"] = "News DTS";
+
+    var articles = ViewBag.Article;
 }
 
 <h1>đỗ thanh sang - SANGDT</h1>
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Author</th>
+    </tr>
+    @foreach(var articleDTS in articles)
+    {
+        <tr>
+            <td> @articleDTS.Id </td>
+            <td> @articleDTS.Title </td>
+            <td> @articleDTS.Content </td>
+            <td> @articleDTS.Author </td>
+        </tr>
+    }
+</table>
