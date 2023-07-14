@@ -123,10 +123,13 @@ namespace SangDT_DotNetCore5._0.Controllers
             };
 
             //option 1: using ViewBag
-            ViewBag.Article = article;
+            //ViewBag.Article = article;
             //option 2: using ViewData
+            ViewData["Article"] = article;
             //option 3: using DataModel
-            return View();
+            return View(article); //dùng cho option 3
+
+            //return View(); dùng cho option 1 ,2
         }
     }
 

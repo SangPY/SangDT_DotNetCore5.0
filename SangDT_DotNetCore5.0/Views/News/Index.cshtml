@@ -1,9 +1,11 @@
-﻿
+﻿@model List<SangDT_DotNetCore5._0.Controllers.Article>
+
 @{
     Layout = "_Layout";
     ViewData["Title"] = "News DTS";
 
-    var articles = ViewBag.Article;
+    //var articles = ViewBag.Article;
+    //var articles = ViewData["Article"] as List<SangDT_DotNetCore5._0.Controllers.Article>;
 }
 
 <h1>đỗ thanh sang - SANGDT</h1>
@@ -14,7 +16,16 @@
         <th>Content</th>
         <th>Author</th>
     </tr>
-    @foreach(var articleDTS in articles)
+   @* @foreach(var articleDTS in articles)
+    {
+        <tr>
+            <td> @articleDTS.Id </td>
+            <td> @articleDTS.Title </td>
+            <td> @articleDTS.Content </td>
+            <td> @articleDTS.Author </td>
+        </tr>
+    }*@
+    @foreach (var articleDTS in Model)
     {
         <tr>
             <td> @articleDTS.Id </td>

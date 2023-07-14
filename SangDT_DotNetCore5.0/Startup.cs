@@ -48,6 +48,13 @@ namespace SangDT_DotNetCore5._0
 
             app.UseEndpoints(endpoints =>
             {
+            //https://localhost:5001/News
+            //https://localhost:5001/SangNews
+
+                endpoints.MapControllerRoute(
+                  name: "News",
+                  pattern: "SangNews", new {controller = "News", action ="Index"});
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
