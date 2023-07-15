@@ -23,6 +23,22 @@ namespace SangDT_DotNetCore5._0.Controllers
             return View();
         }
 
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Contact(Contact formData)
+        {
+            if (!ModelState.IsValid)
+                return View();
+            return Json(formData);
+            //return View();
+        }
+
+
         public IActionResult Privacy()
         {
             return View();

@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using SangDT_DotNetCore5._0.Models;
 
 #nullable disable
 
@@ -73,5 +74,7 @@ namespace SangDT_DotNetCore5._0.Models.Entities
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public DbSet<SangDT_DotNetCore5._0.Models.Contact> Contact { get; set; }
     }
 }
