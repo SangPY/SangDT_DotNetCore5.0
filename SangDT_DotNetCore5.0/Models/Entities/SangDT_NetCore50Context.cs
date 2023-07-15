@@ -17,6 +17,7 @@ namespace SangDT_DotNetCore5._0.Models.Entities
         {
         }
 
+        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -31,6 +32,18 @@ namespace SangDT_DotNetCore5._0.Models.Entities
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity.ToTable("Product");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(254)
+                    .HasDefaultValueSql("('')");
+
+                entity.Property(e => e.Price).HasColumnType("money");
+            });
 
             modelBuilder.Entity<User>(entity =>
             {
