@@ -4,7 +4,7 @@ namespace SangDT_DotNetCore5._0.Models
 {
     public class Contact
     {
-        [Range(1,10)]
+        [Range(0,10)]
         public int Id { get; set; }
 
         [Required]
