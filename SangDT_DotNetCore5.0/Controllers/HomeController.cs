@@ -14,11 +14,16 @@ namespace SangDT_DotNetCore5._0.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        readonly Services.SmtpHandling _serviceHandling;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController()
         {
-            _logger = logger;
+            _serviceHandling = new Services.SmtpHandling();
         }
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
 
         public IActionResult Index()
         {
@@ -38,6 +43,10 @@ namespace SangDT_DotNetCore5._0.Controllers
             {
                 return View(formData);
             }
+
+            //call a method to send the email
+            _serviceHandling.SendEmail(formData.Id, formData.Name, formData.Email, formData.Phone, formData.Note);
+
             //return Json(formData);
 
             // send email using gmail smtp
@@ -70,14 +79,14 @@ namespace SangDT_DotNetCore5._0.Controllers
 
 
         public IActionResult Privacy()
-    {
-        return View();
-    }
+        {
+            return View();
+        }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
     }
-}
 }
