@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using SangDT_DotNetCore5;
 using Microsoft.EntityFrameworkCore;
 using SangDT_DotNetCore5._0.Models.Entities;
+using SangDT_DotNetCore5._0.Services;
 
 namespace SangDT_DotNetCore5._0
 {
@@ -22,11 +23,13 @@ namespace SangDT_DotNetCore5._0
         }
 
         public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
+
             var connectionString = Configuration.GetConnectionString("SangDT_Database");
             services.AddDbContext<SangDT_NetCore50Context>(option => option.UseSqlServer(connectionString));
         }
